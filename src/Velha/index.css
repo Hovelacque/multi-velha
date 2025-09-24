@@ -1,0 +1,33 @@
+.card {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #d1dab9;
+  border-radius: 8px;
+}
+
+.botao {
+  color: #6f646c;
+  height: 4em;
+  width: 4em;
+  margin: 2px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.empty {
+  background-color: #92bea5;
+}
+
+.playerX {
+  background-color: #94266a;
+}
+.playerO {
+  background-color: #671045;
+}
+
+.win {
+  background-color: #31233e;
+}
