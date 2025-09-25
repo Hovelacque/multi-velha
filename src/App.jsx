@@ -11,6 +11,11 @@ function App() {
     '', '', ''
   ])
 
+  useEffect(() => {
+    if (tabuleiros[tabuleiroDaVez] != '') //tabuleiro finalizado
+      setTabuleiroDaVez(-1)
+  }, [tabuleiroDaVez])
+
   return (
     <>
       <h1>Multi Velha</h1>
@@ -23,7 +28,11 @@ function App() {
                 jogadorDaVez={jogadorDaVez}
                 setJogadorDaVez={setJogadorDaVez}
                 setTabuleiroDaVez={setTabuleiroDaVez}
-                overlay={tabuleiroDaVez != index}
+                fimDeJogo={(jogador) => {
+                  tabuleiros[index] = jogador
+                  setTabuleiros([...tabuleiros])
+                }}
+                overlay={tabuleiroDaVez > -1 && tabuleiroDaVez != index}
               />
             )
           })

@@ -7,7 +7,7 @@ const Overlay = ({ children }) => {
     )
 }
 
-export default ({ jogadorDaVez, setJogadorDaVez, setTabuleiroDaVez, overlay }) => {
+export default ({ jogadorDaVez, setJogadorDaVez, setTabuleiroDaVez, overlay, fimDeJogo }) => {
     const [ganhador, setGanhador] = useState([]);
     const [gameover, setGameover] = useState(false);
     const [jogadas, setJogadas] = useState([
@@ -15,6 +15,11 @@ export default ({ jogadorDaVez, setJogadorDaVez, setTabuleiroDaVez, overlay }) =
         '', '', '',
         '', '', ''
     ])
+
+    useEffect(() => {
+        if (gameover)
+            fimDeJogo(jogadas[ganhador[0]])
+    }, [gameover])
 
     useEffect(() => {
         verificaJogadas()
@@ -85,7 +90,7 @@ export default ({ jogadorDaVez, setJogadorDaVez, setTabuleiroDaVez, overlay }) =
                 }
                 {
                     overlay && <div className='block'>
-                        <label>{gameover ?? jogadas[ganhador[0]]}</label>
+                        <label>{gameover ? jogadas[ganhador[0]] : ""}</label>
                     </div>
                 }
             </div>
